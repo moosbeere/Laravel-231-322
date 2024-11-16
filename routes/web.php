@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,8 @@ use App\Http\Controllers\AuthController;
 Route::get('/auth/signup', [AuthController::class, 'signup']);
 Route::post('/auth/registr', [AuthController::class, 'registr']);
 
-
+//Article
+Route::resource('articles', ArticleController::class);
 
 
 Route::get('/', [MainController::class, 'index']);
