@@ -45,8 +45,10 @@
           </ul>
         </li> -->
       </ul>
-      <a href="/auth/signup" class="btn btn-outline-success">SignUp</a>
-    </div>
+      <a href="/auth/signup" class="btn btn-outline-success me-3">SignUp</a>
+      <a href="/auth/login" class="btn btn-outline-success">SignIn</a>
+      <a href="/auth/logout" class="btn btn-outline-success">Logout</a>
+  </div>
   </div>
 </nav>
     </header>
