@@ -58,8 +58,10 @@
       <div class="card-body">
         <h5 class="card-title">{{$comment->name}}</h5>
         <p class="card-text">{{$comment->desc}}</p>
-        <a href="/comment/{{$comment->id}}/edit" class="btn btn-primary">Comment update</a>
-        <a href="/comment/{{$comment->id}}/delete" class="btn btn-warning">Comment delete</a>        
+        @can('update_comment',$comment)
+          <a href="/comment/{{$comment->id}}/edit" class="btn btn-primary">Edit comment</a>
+          <a href="/comment/{{$comment->id}}/delete" class="btn btn-warning">Delete comment</a>
+        @endcan     
       </div>
     </div>
   </div>

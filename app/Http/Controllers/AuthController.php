@@ -30,6 +30,7 @@ class AuthController extends Controller
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>Hash::make(request('password')),
+            'role'=>'reader',
         ]);
         $token = $user->createToken('MyAppToken')->plainTextToken;
         $user->remember_token = $token;
