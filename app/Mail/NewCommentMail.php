@@ -16,14 +16,14 @@ use App\Models\Article;
 class NewCommentMail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $article;
     /**
      * Create a new message instance.
      */
     public function __construct(
         public Comment $comment,
-        public $article){
-            $this->article = Article::findOrFail($article);
+        ){
+            $this->article = Article::findOrFail($comment->article_id);
         }
 
     /**
@@ -46,7 +46,7 @@ class NewCommentMail extends Mailable
         return new Content(
             view: 'mail.newcomment',
             with:[
-                'article'=>$this->article->name,
+                'article'=>$this->article,
                 'comment'=>$this->comment->desc,
             ]
         );
