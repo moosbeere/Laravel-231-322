@@ -29,10 +29,13 @@ Route::resource('article', ArticleController::class)->middleware('auth:sanctum')
 
 //Comment
 Route::controller(CommentController::class)->prefix('/comment')->middleware('auth:sanctum')->group(function(){
-    Route::post('','store');
-    Route::get('/{id}/edit', 'edit');
-    Route::post('/{comment}/update', 'update');
-    Route::get('/{id}/delete', 'delete');
+    Route::post('','store')->name('comment.store');
+    Route::get('/{id}/edit', 'edit')->name('comment.edit');
+    Route::post('/{comment}/update', 'update')->name('comment.update');
+    Route::get('/{id}/delete', 'delete')->name('comment.delete');
+    Route::get('/index','index')->name('comment.index');
+    Route::get('/{comment}/accept', 'accept')->name('comment.accept');
+    Route::get('/{comment}/reject', 'reject')->name('comment.reject');
 });
 
 
