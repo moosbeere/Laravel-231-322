@@ -65,7 +65,7 @@ class CommentController extends Controller
 
     public function accept(Comment $comment){
         $article = Article::findOrFail($comment->article_id);
-        $users = User::where('id', '!=', auth()->user()->id)->get();
+        $users = User::where('id', '!=', $comment->user_id)->get();
         $comment->accept = true;
         if ($comment->save()) Notification::send($users, new NewCommentNotify($article, $comment->name));
         return redirect()->route('comment.index');
